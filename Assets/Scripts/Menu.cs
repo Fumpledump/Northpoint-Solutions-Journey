@@ -5,11 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    // Menu Buttons
-    public void StartGame() {SceneManager.LoadScene("Game");}
-    public void Options() {SceneManager.LoadScene("Options");}
-    public void Information() { SceneManager.LoadScene("Info");}
-    public void PastScores() { SceneManager.LoadScene("Scores");}
-    public void BackToTitle() { SceneManager.LoadScene("Title");}
+    public Animator transition;
+    
+    public float transitionTime = 1f;
 
+    // Menu Buttons
+    public void StartGame() { LoadNextScene("Game");}
+    public void Options() { LoadNextScene("Options");}
+    public void Information() { LoadNextScene("Info");}
+    public void PastScores() { LoadNextScene("Scores");}
+    public void BackToTitle() { LoadNextScene("Title");}
+
+    /// <summary>
+    /// Responsible for loading scenes with the proper transition effect
+    /// </summary>
+    /// <param name="sceneName"></param>
+    public void LoadNextScene(string sceneName)
+    {
+        StartCoroutine(LoadInScene(sceneName));
+    }
+
+    IEnumerator LoadInScene(string sceneName)
+    {
+        // Plays Transition Animation
+        transition.SetTrigger("Start");
+
+        //Waits
+        yield return new WaitForSeconds(transitionTime);
+
+        //Loads Scene
+        SceneManager.LoadScene(sceneName);
+    }
 }

@@ -14,7 +14,15 @@ public class Menu : MonoBehaviour
     public void Options() { LoadNextScene("Options");}
     public void Information() { LoadNextScene("Info");}
     public void PastScores() { LoadNextScene("Scores");}
-    public void BackToTitle() { LoadNextScene("Title");}
+    public void BackToTitle()
+    {
+        if (PauseMenu.GameIsPaused)
+        {
+            Time.timeScale = 1f;
+            PauseMenu.GameIsPaused = false;
+        }
+        LoadNextScene("Title"); Debug.Log("button pressed");  
+    }
 
     /// <summary>
     /// Responsible for loading scenes with the proper transition effect

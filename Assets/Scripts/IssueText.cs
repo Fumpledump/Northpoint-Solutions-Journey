@@ -10,7 +10,7 @@ public class IssueText : MonoBehaviour
 
     private void Start()
     {
-        Setup("Hello World!");
+        Setup("Test Test Test aaaaaaaaa!");
     }
     private void Setup(string text)
     {

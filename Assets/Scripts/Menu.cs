@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
 
     // Menu Buttons
     public void StartGame() { LoadNextScene("Game");}
+    public void InputProblem() { LoadNextScene("Problem");}
     public void Options() { LoadNextScene("Options");}
     public void Information() { LoadNextScene("Info");}
     public void PastScores() { LoadNextScene("Scores");}
